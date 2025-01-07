@@ -2,6 +2,7 @@ from common.i18n.dictionary import preprocess_dictionary
 
 dictionary = {
     "zh_CN": {
+        "Info Viewer":"信息查看器",
         "Get Object's Info":"获得物体信息",
         "Get object's info":"获得物体信息",
         "Get Node's Info":"获得节点信息",
