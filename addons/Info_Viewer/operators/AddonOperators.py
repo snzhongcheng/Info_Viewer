@@ -29,7 +29,7 @@ class INFOVIEWER_OT_GetMaterialNodeInfo(bpy.types.Operator):# 获取材质节点
     
     @classmethod
     def poll(cls, context: bpy.types.Context):
-        return True
+        return context.active_object.active_material
     
     def execute(self, context: bpy.types.Context):
         node = context.active_object.active_material.node_tree.nodes.active
@@ -48,8 +48,8 @@ class INFOVIEWER_OT_GetGeometryNodeInfo(bpy.types.Operator):# 获取几何节点
     
     @classmethod
     def poll(cls, context: bpy.types.Context):
-        return True
-    
+        return "node_group" in dir(context.active_object.modifiers.active)
+
     def execute(self, context: bpy.types.Context):
         node = context.active_object.modifiers.active.node_group.nodes.active
         context.scene.view_bl_idname = node.bl_idname
