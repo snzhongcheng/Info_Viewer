@@ -51,12 +51,12 @@ class INFOVIEWER_OT_GetGeometryNodeInfo(bpy.types.Operator):# 获取几何节点
         return True
     
     def execute(self, context: bpy.types.Context):
-        # node = context.active_object.active
-        # context.scene.view_bl_idname = node.bl_idname
-        # context.scene.view_bl_label = node.bl_label
-        # context.scene.view_name = node.name
-        # context.scene.view_name_full = "None"
-        # context.scene.view_type = node.type
+        node = context.active_object.modifiers.active.node_group.nodes.active
+        context.scene.view_bl_idname = node.bl_idname
+        context.scene.view_bl_label = node.bl_label
+        context.scene.view_name = node.name
+        context.scene.view_name_full = "None"
+        context.scene.view_type = node.type
         return {'FINISHED'}
 
 class INFOVIEWER_OT_Copy_bl_idname(bpy.types.Operator):# 复制bl_idname
