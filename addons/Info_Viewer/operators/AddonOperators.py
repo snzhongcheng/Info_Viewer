@@ -4,7 +4,7 @@ from ..config import __addon_name__
 
 class INFOVIEWER_OT_GetObjectInfo(bpy.types.Operator):# 获取物体信息
     bl_label = "Get Object's Info"
-    bl_idname = "infoviewer.git_object_info"
+    bl_idname = "infoviewer.get_object_info"
     bl_description = "Get object's info"
     bl_options = {'REGISTER','UNDO'}
     
@@ -21,10 +21,10 @@ class INFOVIEWER_OT_GetObjectInfo(bpy.types.Operator):# 获取物体信息
         
         return {'FINISHED'}
 
-class INFOVIEWER_OT_GetNodeInfo(bpy.types.Operator):# 获取物体信息
-    bl_label = "Get Node's Info"
-    bl_idname = "infoviewer.git_node_info"
-    bl_description = "Get node's info"
+class INFOVIEWER_OT_GetMaterialNodeInfo(bpy.types.Operator):# 获取材质节点信息
+    bl_label = "Get Material Node's Info"
+    bl_idname = "infoviewer.get_material_node_info"
+    bl_description = "Get material node's info"
     bl_options = {'REGISTER','UNDO'}
     
     @classmethod
@@ -38,6 +38,25 @@ class INFOVIEWER_OT_GetNodeInfo(bpy.types.Operator):# 获取物体信息
         context.scene.view_name = node.name
         context.scene.view_name_full = "None"
         context.scene.view_type = node.type
+        return {'FINISHED'}
+
+class INFOVIEWER_OT_GetGeometryNodeInfo(bpy.types.Operator):# 获取几何节点信息
+    bl_label = "Get Geometry Node's Info"
+    bl_idname = "infoviewer.get_geometry_node_info"
+    bl_description = "Get geometry node's info"
+    bl_options = {'REGISTER','UNDO'}
+    
+    @classmethod
+    def poll(cls, context: bpy.types.Context):
+        return True
+    
+    def execute(self, context: bpy.types.Context):
+        # node = context.active_object.active
+        # context.scene.view_bl_idname = node.bl_idname
+        # context.scene.view_bl_label = node.bl_label
+        # context.scene.view_name = node.name
+        # context.scene.view_name_full = "None"
+        # context.scene.view_type = node.type
         return {'FINISHED'}
 
 class INFOVIEWER_OT_Copy_bl_idname(bpy.types.Operator):# 复制bl_idname

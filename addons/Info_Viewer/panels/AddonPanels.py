@@ -45,6 +45,7 @@ class VIEW3D_PT_InfoViewerOperators(bpy.types.Panel):
         
         layout = self.layout
 
-        row_Operators = layout.row()
-        row_Operators.operator("infoviewer.git_object_info", icon="OBJECT_DATA")
-        row_Operators.operator("infoviewer.git_node_info", icon="NODE")
+        col_Operators = layout.column()
+        col_Operators.operator("infoviewer.get_object_info", icon="OBJECT_DATA")
+        col_Operators.operator("infoviewer.get_material_node_info", icon="MATERIAL_DATA")
+        col_Operators.operator("infoviewer.get_geometry_node_info", icon="NODETREE")
