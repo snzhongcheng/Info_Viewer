@@ -1,28 +1,105 @@
 import bpy
 
 from ..config import __addon_name__
-from ..preference.AddonPreferences import ExampleAddonPreferences
 
+class INFOVIEWER_OT_GetObjectInfo(bpy.types.Operator):# 获取物体信息
+    bl_label = "Get Object's Info"
+    bl_idname = "infoviewer.git_object_info"
+    bl_description = "Get object's info"
+    bl_options = {'REGISTER','UNDO'}
+    
+    @classmethod
+    def poll(cls, context: bpy.types.Context):
+        return context.selected_objects
+    
+    def execute(self, context: bpy.types.Context):
+        context.scene.view_bl_idname = "None"
+        context.scene.view_bl_label = "None"
+        context.scene.view_name = context.active_object.name
+        context.scene.view_name_full = context.active_object.name_full
+        context.scene.view_type = context.active_object.type
+        
+        return {'FINISHED'}
 
-# This Example Operator will scale up the selected object
-class ExampleOperator(bpy.types.Operator):
-    '''ExampleAddon'''
-    bl_idname = "object.example_ops"
-    bl_label = "ExampleOperator"
+class INFOVIEWER_OT_GetNodeInfo(bpy.types.Operator):# 获取物体信息
+    bl_label = "Get Node's Info"
+    bl_idname = "infoviewer.git_node_info"
+    bl_description = "Get node's info"
+    bl_options = {'REGISTER','UNDO'}
+    
+    @classmethod
+    def poll(cls, context: bpy.types.Context):
+        return True
+    
+    def execute(self, context: bpy.types.Context):
+        # context.scene.view_bl_idname = context.active_node.bl_idname
+        # context.scene.view_bl_label = context.active_node.bl_label
+        # context.scene.view_name = context.active_node.name
+        # context.scene.view_name_full = "None"
+        # context.scene.view_type = context.active_node.type
+        return {'FINISHED'}
 
-    # 确保在操作之前备份数据，用户撤销操作时可以恢复
-    bl_options = {'REGISTER', 'UNDO'}
+class INFOVIEWER_OT_Copy_bl_idname(bpy.types.Operator):# 复制bl_idname
+    bl_label = "Copy bl_idname"
+    bl_idname = "infoviewer.copy_bl_idname"
+    bl_description = "Copy bl_idname"
 
     @classmethod
     def poll(cls, context: bpy.types.Context):
-        return context.active_object is not None
+        return context.scene.view_bl_idname != "None"
 
     def execute(self, context: bpy.types.Context):
-        addon_prefs = bpy.context.preferences.addons[__addon_name__].preferences
-        assert isinstance(addon_prefs, ExampleAddonPreferences)
-        # use operator
-        # bpy.ops.transform.resize(value=(2, 2, 2))
+        context.window_manager.clipboard = context.scene.view_bl_idname
+        return {'FINISHED'}
 
-        # manipulate the scale directly
-        context.active_object.scale *= addon_prefs.number
+class INFOVIEWER_OT_Copy_bl_label(bpy.types.Operator):# 复制bl_label
+    bl_label = "Copy bl_label"
+    bl_idname = "infoviewer.copy_bl_label"
+    bl_description = "Copy bl_label"
+
+    @classmethod
+    def poll(cls, context: bpy.types.Context):
+        return context.scene.view_bl_label != "None"
+
+    def execute(self, context):
+        context.window_manager.clipboard = context.scene.view_bl_label
+        return {'FINISHED'}
+
+class INFOVIEWER_OT_Copy_view_name(bpy.types.Operator):# 复制name
+    bl_label = "Copy name"
+    bl_idname = "infoviewer.copy_view_name"
+    bl_description = "Copy name"
+
+    @classmethod
+    def poll(cls, context: bpy.types.Context):
+        return context.scene.view_name != "None"
+
+    def execute(self, context):
+        bpy.context.window_manager.clipboard = context.scene.view_name
+        return {'FINISHED'}
+
+class INFOVIEWER_OT_Copy_view_name_full(bpy.types.Operator):# 复制name_full
+    bl_label = "Copy name_full"
+    bl_idname = "infoviewer.copy_view_name_full"
+    bl_description = "Copy name_full"
+
+    @classmethod
+    def poll(cls, context: bpy.types.Context):
+        return context.scene.view_name_full != "None"
+
+    def execute(self, context):
+        bpy.context.window_manager.clipboard = context.scene.view_name_full
+        return {'FINISHED'}
+
+class INFOVIEWER_OT_Copy_view_type(bpy.types.Operator):# 复制type
+    bl_label = "Copy type"
+    bl_idname = "infoviewer.copy_view_type"
+    bl_description = "Copy type"
+
+    @classmethod
+    def poll(cls, context: bpy.types.Context):
+        return context.scene.view_type != "None"
+
+    def execute(self, context):
+        bpy.context.window_manager.clipboard = context.scene.view_type
         return {'FINISHED'}

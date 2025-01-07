@@ -1,53 +1,50 @@
 import bpy
 
 from ..config import __addon_name__
-from ..operators.AddonOperators import ExampleOperator
 from ....common.i18n.i18n import i18n
 from ....common.types.framework import reg_order
 
-
-class BasePanel(object):
+@reg_order(0)# ==========显示面板==========
+class VIEW3D_PT_InfoViewerViewer(bpy.types.Panel):
+    bl_label = "Viewer"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
-    bl_category = "ExampleAddon"
-
-    @classmethod
-    def poll(cls, context: bpy.types.Context):
-        return True
-
-
-@reg_order(0)
-class ExampleAddonPanel(BasePanel, bpy.types.Panel):
-    bl_label = "Example Addon Side Bar Panel"
-    bl_idname = "SCENE_PT_sample"
+    bl_category = "Info Viewer"
 
     def draw(self, context: bpy.types.Context):
-        addon_prefs = context.preferences.addons[__addon_name__].preferences
 
         layout = self.layout
+        row_Viewer = layout.row()
 
-        layout.label(text=i18n("Example Functions") + ": " + str(addon_prefs.number))
-        layout.prop(addon_prefs, "filepath")
-        layout.separator()
+        split = row_Viewer.split(factor=0.3)
 
-        row = layout.row()
-        row.prop(addon_prefs, "number")
-        row.prop(addon_prefs, "boolean")
+        col_Name = split.column()
+        col_Name.label(text="bl_idname")
+        col_Name.label(text="bl_label")
+        col_Name.label(text="name ")
+        col_Name.label(text="name_full")
+        col_Name.label(text="type")
+        
 
-        layout.operator(ExampleOperator.bl_idname)
+        col_Value = split.column()
+        col_Value.operator("infoviewer.copy_bl_idname",text=" " + context.scene.view_bl_idname + " ")
+        col_Value.operator("infoviewer.copy_bl_label",text=" " + context.scene.view_bl_label + " ")
+        col_Value.operator("infoviewer.copy_view_name",text=" " + context.scene.view_name + " ")
+        col_Value.operator("infoviewer.copy_view_name_full",text=" " + context.scene.view_name_full + " ")
+        col_Value.operator("infoviewer.copy_view_type",text=" " + context.scene.view_type + " ")
+        
 
-    @classmethod
-    def poll(cls, context: bpy.types.Context):
-        return True
-
-
-# This panel will be drawn after ExampleAddonPanel since it has a higher order value
-@reg_order(1)
-class ExampleAddonPanel2(BasePanel, bpy.types.Panel):
-    bl_label = "Example Addon Side Bar Panel"
-    bl_idname = "SCENE_PT_sample2"
+@reg_order(1)# ==========操作面板==========
+class VIEW3D_PT_InfoViewerOperators(bpy.types.Panel):
+    bl_label = "Operators"
+    bl_space_type = "VIEW_3D"
+    bl_region_type = "UI"
+    bl_category = "Info Viewer"
 
     def draw(self, context: bpy.types.Context):
+        
         layout = self.layout
-        layout.label(text="Second Panel")
-        layout.operator(ExampleOperator.bl_idname)
+
+        row_Operators = layout.row(align=True)
+        row_Operators.operator("infoviewer.git_object_info", icon="OBJECT_DATA")
+        row_Operators.operator("infoviewer.git_node_info", icon="NODETREE")

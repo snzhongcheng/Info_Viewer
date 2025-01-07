@@ -6,13 +6,14 @@ from ...common.class_loader import auto_load
 from ...common.class_loader.auto_load import add_properties, remove_properties
 from ...common.i18n.dictionary import common_dictionary
 from ...common.i18n.i18n import load_dictionary
+from bpy.props import StringProperty, IntProperty, BoolProperty, EnumProperty
 
 # Add-on info
 bl_info = {
-    "name": "Info Viewer",
+    "name": "Info Viewer/信息查看器",
     "author": "少年忠城-snzhongcheng",
     "blender": (4, 2, 0),
-    "version": (0, 0, 1),
+    "version": (1, 0, 0),
     "description": "Retrieve all information related to plugin development for the selected object and node",
     "warning": "",
     "doc_url": "https://github.com/snzhongcheng/Info_Viewer",
@@ -21,7 +22,15 @@ bl_info = {
     "category": "Development"
 }
 
-_addon_properties = {}
+_addon_properties = {
+    bpy.types.Scene: {
+        "view_bl_idname": StringProperty(name="view_bl_idname", default=""),
+        "view_bl_label": StringProperty(name="view_bl_label", default=""),
+        "view_name": StringProperty(name="view_name", default=""),
+        "view_name_full": StringProperty(name="view_name_full", default=""),
+        "view_type": StringProperty(name="view_type", default=""),
+        }
+}
 
 
 # You may declare properties like following, framework will automatically add and remove them.

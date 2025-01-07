@@ -2,16 +2,15 @@ from common.i18n.dictionary import preprocess_dictionary
 
 dictionary = {
     "zh_CN": {
-        ("*", "Example Addon Side Bar Panel"): "示例插件面板",
-        ("*", "Example Functions"): "示例功能",
-        ("*", "ExampleAddon"): "示例插件",
-        ("*", "Resource Folder"): "资源文件夹",
-        ("*", "Int Config"): "整数参数",
-        # This is not a standard way to define a translation, but it is still supported with preprocess_dictionary.
-        "Boolean Config": "布尔参数",
-        "Second Panel": "第二面板",
-        ("*", "Add-on Preferences View"): "插件设置面板",
-        ("Operator", "ExampleOperator"): "示例操作",
+        "Get Object's Info":"获得物体信息",
+        "Get object's info":"获得物体信息",
+        "Get Node's Info":"获得节点信息",
+        "Get node's info":"获得节点信息",
+        "Copy bl_idname":"复制 bl_idname",
+        "Copy bl_label":"复制 bl_label",
+        "Copy name":"复制name",
+        "Copy name_full":"复制name_full",
+        "Copy type":"复制type",
     }
 }
 

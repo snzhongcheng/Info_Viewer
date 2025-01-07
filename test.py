@@ -1,11 +1,6 @@
 from framework import test_addon
 from main import ACTIVE_ADDON
 
-# 测试前请修改ACTIVE_ADDON参数
-
-# The name of the addon to be tested, this name is defined in the config.py of the addon as __addon_name__
-# 插件的config.py文件中定义的插件名称 __addon_name__
-
 if __name__ == '__main__':
     import argparse
 
