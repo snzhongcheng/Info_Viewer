@@ -1,0 +1,14 @@
+schema_version = "1.0.0"
+id = "Info_Viewer"
+version = "0.0.1"
+name = "Info Viewer"
+tagline = "Retrieve all information related to plugin development for the selected object and node"
+maintainer = "少年忠城-snzhongcheng"
+type = "add-on"
+tags = ["Development"]
+blender_version_min = "4.2.0"
+license = [
+    "SPDX:GPL-3.0-or-later",
+]
+website = "https://github.com/snzhongcheng/Info_Viewer"
+copyright = ["2025 少年忠城-snzhongcheng"]
