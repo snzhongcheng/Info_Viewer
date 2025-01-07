@@ -32,11 +32,12 @@ class INFOVIEWER_OT_GetNodeInfo(bpy.types.Operator):# 获取物体信息
         return True
     
     def execute(self, context: bpy.types.Context):
-        # context.scene.view_bl_idname = context.active_node.bl_idname
-        # context.scene.view_bl_label = context.active_node.bl_label
-        # context.scene.view_name = context.active_node.name
-        # context.scene.view_name_full = "None"
-        # context.scene.view_type = context.active_node.type
+        node = context.active_object.active_material.node_tree.nodes.active
+        context.scene.view_bl_idname = node.bl_idname
+        context.scene.view_bl_label = node.bl_label
+        context.scene.view_name = node.name
+        context.scene.view_name_full = "None"
+        context.scene.view_type = node.type
         return {'FINISHED'}
 
 class INFOVIEWER_OT_Copy_bl_idname(bpy.types.Operator):# 复制bl_idname
