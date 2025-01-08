@@ -14,7 +14,7 @@ bl_info = {
     "author": "少年忠城-snzhongcheng",
     "blender": (4, 2, 0),
     "version": (1, 0, 0),
-    "description": "Easier to see the info of the avtive object and node",
+    "description": "Easier to see the info of the active object and node",
     "warning": "",
     "doc_url": "https://github.com/snzhongcheng/Info_Viewer",
     "tracker_url": "https://space.bilibili.com/455309610",
