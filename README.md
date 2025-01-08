@@ -1,10 +1,16 @@
-# 维护插件注意事项
+# 信息查看器
 
-## 设置与运行
+## 基本功能
+
+选择要查看的物体，执行操作，得到它的信息（左键点击即可复制到剪贴板）
+
+## 维护插件注意事项
+
+### 设置与运行
 
 本插件基于由[ZHU Xinyu](https://github.com/xzhuah)制作的[Blender插件打包工具](https://github.com/xzhuah/BlenderAddonPackageTool)测试及打包。拉取源码后应当执行如下操作。
 
-### 1. 设置**main.py**中的路径为您的Blender路径
+#### 1. 设置**main.py**中的路径为您的Blender路径
 
 ```python
 # The path of the blender executable. Blender2.93 is the minimum version required
@@ -19,8 +25,8 @@ BLENDER_EXE_PATH = "C:/Program Files/Blender Foundation/Blender 4.2/blender.exe"
 # BLENDER_EXE_PATH = "/Applications/Blender/blender-3.6.0-macOS/Blender.app"
 ```
 
-### 2. 运行**text.py**
+#### 2. 运行**text.py**
 
-### 3. 修改代码并测试后提交至Info_Viewer库
+#### 3. 修改代码并测试后提交至Info_Viewer库
 
 *【有关框架的更多功能请访问[插件打包工具文档](https://github.com/xzhuah/BlenderAddonPackageTool?tab=readme-ov-file#blender-插件开发框架及打包工具)】*
