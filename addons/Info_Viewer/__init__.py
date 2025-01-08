@@ -17,7 +17,7 @@ bl_info = {
     "description": "Easier to see the info of the active object and node",
     "warning": "",
     "doc_url": "https://github.com/snzhongcheng/Info_Viewer",
-    "tracker_url": "https://space.bilibili.com/455309610",
+    "tracker_url": "https://github.com/snzhongcheng/Info_Viewer/issues",
     "support": "COMMUNITY",
     "category": "Development"
 }
