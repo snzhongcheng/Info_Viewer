@@ -30,7 +30,6 @@ class INFOVIEWER_OT_GetMaterialNodeInfo(bpy.types.Operator):# 获取材质节点
     @classmethod
     def poll(cls, context: bpy.types.Context):
         if context.active_object.active_material:
-            print(context.active_object.active_material.node_tree.nodes.active)
             if context.active_object.active_material.node_tree.nodes.active != None:
                 return True
     
