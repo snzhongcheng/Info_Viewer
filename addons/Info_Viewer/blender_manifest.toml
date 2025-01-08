@@ -1,6 +1,6 @@
 schema_version = "1.0.0"
 id = "Info_Viewer"
-version = "1.0.0"
+version = "1.0.1"
 name = "Info Viewer/信息查看器"
 tagline = "Easier to see the info of the active object and node"
 maintainer = "少年忠城-snzhongcheng"

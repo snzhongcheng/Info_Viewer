@@ -13,7 +13,7 @@ bl_info = {
     "name": "Info Viewer/信息查看器",
     "author": "少年忠城-snzhongcheng",
     "blender": (4, 2, 0),
-    "version": (1, 0, 0),
+    "version": (1, 0, 1),
     "description": "Easier to see the info of the active object and node",
     "warning": "",
     "doc_url": "https://github.com/snzhongcheng/Info_Viewer",
